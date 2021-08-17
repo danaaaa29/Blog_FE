@@ -7,28 +7,19 @@ import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { PostListComponent} from "./post-list.component";
 import { PostDetailComponent } from "./post-detail.component";
-import {MatIconModule} from "@angular/material/icon";
-import {MatCardModule} from "@angular/material/card";
-import {MatMenuModule} from "@angular/material/menu";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatCommonModule} from "@angular/material/core";
+import { MaterialModule } from "../../shared/material.module";
 
 
 
 @NgModule({
   imports: [
-    MatIconModule,
-    MatCardModule,
-    MatMenuModule,
-    MatFormFieldModule,
     FormsModule,
     CommonModule,
     HttpClientModule,
-    MatCommonModule
-
-
+    MaterialModule
   ],
-  exports: [],
+  exports: [
+  ],
   declarations: [
     PostListComponent,
     PostDetailComponent,

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { apiConfig } from "../../api-config";
+import { apiConfig } from "../../../shared/api-config";
 import { HttpClient } from "@angular/common/http";
 import { IPost } from "../../model/post-list.model";
 import { CreatePostDialog } from "../../model/create-post-dialog.model";
