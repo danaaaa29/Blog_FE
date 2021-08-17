@@ -1,0 +1,61 @@
+<h1 mat-dialog-title [ngStyle]="{color: hintColor}">New Post</h1>
+<form #form="ngForm">
+<div class="container-fluid mb-4 p-0">
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field class="w-100" color="accent">
+          <input type="text"
+                 matInput
+                 placeholder="Title"
+                 required
+                 name="title"
+                 autocomplete="off"
+                 [(ngModel)]="newPostModel.title">
+        </mat-form-field>
+      </div>
+
+      <div class="col-6">
+        <mat-form-field class="w-100" color="accent">
+          <input type="text"
+                 matInput
+                 placeholder="SubTitle"
+                 name="subTitle"
+                 autocomplete="off"
+                 [(ngModel)]="newPostModel.subTitle">
+        </mat-form-field>
+      </div>
+
+      <div class="col-12">
+        <mat-form-field class="w-100" color="accent">
+          <input type="text"
+                 matInput
+                 placeholder="Image Url"
+                 name="imageUrl"
+                 autocomplete="off"
+                 [(ngModel)]="newPostModel.imageUrl">
+        </mat-form-field>
+      </div>
+
+      <div class="col-12">
+        <mat-form-field class="w-100" color="accent">
+          <textarea matInput
+                    placeholder="Content"
+                    required
+                    name="content"
+                    [(ngModel)]="newPostModel.content"></textarea>
+          <mat-hint align="start" [ngStyle]="{color: hintColor}">
+            <strong>You can write your content here!</strong> </mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button
+          type="button"
+          (click)="submit(form)"
+          color="accent"
+          appearence="fill"
+          [disabled]="!form.valid">Submit</button>
+  <button mat-raised-button mat-dialog-close color="primary">Cancel</button>
+</div>
+</form>
