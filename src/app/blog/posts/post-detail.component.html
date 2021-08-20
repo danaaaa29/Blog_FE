@@ -6,7 +6,13 @@
         <mat-card-title>{{post.title}}</mat-card-title>
         <mat-card-subtitle>{{post.subTitle}}</mat-card-subtitle>
       </mat-card-header>
+      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
         <mat-card-content>{{post.content}}</mat-card-content>
+      <mat-card-actions>
+        <button mat-button><mat-icon>thumb_up</mat-icon></button>
+        <button mat-button><mat-icon>reply</mat-icon></button>
+        <button mat-button><mat-icon>share</mat-icon></button>
+      </mat-card-actions>
     </mat-card>
     </div>
   </div>

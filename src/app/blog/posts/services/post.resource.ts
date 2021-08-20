@@ -3,6 +3,7 @@ import { apiConfig } from "../../../shared/api-config";
 import { HttpClient } from "@angular/common/http";
 import { IPost } from "../../model/post-list.model";
 import { CreatePostDialog } from "../../model/create-post-dialog.model";
+import { UpdatePostDialog } from "../../model/update-post-dialog.model";
 
 
 
@@ -22,6 +23,14 @@ export class PostResource {
 
   findOne(id: number) {
     return this.http.get<IPost>(`${this.URL}/${id}`);
+  }
+
+  update(id: number, updatePost: UpdatePostDialog) {
+    return this.http.put<IPost>(`${this.URL}/${id}`, updatePost);
+  }
+
+  delete(id: number) {
+    return this.http.delete(`${this.URL}/${id}`);
   }
 
 }

@@ -16,11 +16,11 @@
               <mat-icon>article</mat-icon>
               <span>View Post</span>
             </button>
-              <button mat-menu-item>
+              <button mat-menu-item (click)="openUpdatePostDialog()">
               <mat-icon>edit</mat-icon>
               <span>Edit Post</span>
               </button>
-            <button mat-menu-item>
+            <button mat-menu-item (click)="deletePost(post.id)">
               <mat-icon>delete</mat-icon>
               <span>Delete Post</span>
             </button>
@@ -28,7 +28,7 @@
           <mat-card-title>{{post.title}}</mat-card-title>
           <mat-card-subtitle>{{post.subTitle}}</mat-card-subtitle>
         </mat-card-header>
-<!--        <img mat-card-image [src]="post.imageUrl">-->
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
         <mat-card-content>
           <p>{{post.content}}</p>
         </mat-card-content>
