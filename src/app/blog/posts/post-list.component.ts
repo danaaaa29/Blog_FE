@@ -4,8 +4,7 @@ import { IPost } from "../model/post-list.model";
 import { MatDialog } from "@angular/material/dialog";
 import { CreatePostDialogComponent } from "./dialogs/create-post-dialog.component";
 import { Router } from "@angular/router";
-import { UpdatePostDialogComponent } from "./dialogs/update-post-dialog.component";
-
+import { CreatePostDialog } from "../model/create-post-dialog.model";
 
 
 
@@ -22,24 +21,15 @@ export class PostListComponent implements OnInit {
     subTitle: '',
     imageUrl: '',
     content: '',
-    status: true
   };
  postColor = '#69f0ae';
- public updatePost = {
-   id: 0,
-   title: '',
-   subTitle: '',
-   imageUrl: '',
-   content: ''
- }
-
 
   constructor(private postService: PostService,
               private matDialog: MatDialog,
               private router: Router) {}
 
   ngOnInit() {
-    this.postService.getAllPosts().subscribe((res: IPost[]) => {
+    this.postService.getAllPostsByDate().subscribe((res: IPost[]) => {
       this.posts = res;
     });
   }
@@ -47,6 +37,7 @@ export class PostListComponent implements OnInit {
   openCreateDialogPost() {
     const dialogRef = this.matDialog.open(CreatePostDialogComponent, {
       width: '600px',
+      data: {post: new CreatePostDialog()}
     });
     dialogRef.afterClosed().subscribe(newPost => {
       if (newPost) {
@@ -59,14 +50,16 @@ export class PostListComponent implements OnInit {
     this.router.navigate(['/view-post', post.id]);
   }
 
-  openUpdatePostDialog() {
-    const dialogRef = this.matDialog.open(UpdatePostDialogComponent, {
+  openUpdatePostDialog(post: IPost) {
+    const dialogRef = this.matDialog.open(CreatePostDialogComponent, {
       width: '600px',
+      data: { post: post}
     });
-    dialogRef.componentInstance.editPostModel = this.updatePost;
-    dialogRef.afterClosed().subscribe(res => {
-      const index = this.posts.findIndex( editPost => editPost.id === res.id);
-      this.posts[index] = res;
+    dialogRef.afterClosed().subscribe(updatePost => {
+      if (updatePost) {
+        const index = this.posts.findIndex( editPost => editPost.id === updatePost.id);
+        this.posts[index] = updatePost;
+      }
     });
   }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PostResource } from "./post.resource";
 import { CreatePostDialog } from "../../model/create-post-dialog.model";
-import { UpdatePostDialog } from "../../model/update-post-dialog.model";
+
 
 
 @Injectable({providedIn: 'root'})
@@ -17,12 +17,16 @@ export class PostService {
     return this.postResource.findAll();
   }
 
+  getAllPostsByDate() {
+    return this.postResource.findAllByDate();
+  }
+
   getPost(id: number) {
     return this.postResource.findOne(id);
   }
 
-  updatePost(id: number, updatePost: UpdatePostDialog) {
-    return this.postResource.update(id, updatePost);
+  updatePost(updatePost: CreatePostDialog) {
+    return this.postResource.update(updatePost);
   }
 
   deletePost(id: number) {

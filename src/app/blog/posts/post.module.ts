@@ -11,6 +11,7 @@ import { MaterialModule } from "../../shared/material.module";
 
 
 
+
 @NgModule({
   imports: [
     FormsModule,
@@ -23,10 +24,10 @@ import { MaterialModule } from "../../shared/material.module";
   declarations: [
     PostListComponent,
     PostDetailComponent,
-    CreatePostDialogComponent
+    CreatePostDialogComponent,
   ],
   entryComponents: [
-    CreatePostDialogComponent
+    CreatePostDialogComponent,
   ],
   providers: [
     PostService,

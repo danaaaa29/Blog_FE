@@ -1,4 +1,4 @@
-<h1 mat-dialog-title [ngStyle]="{color: hintColor}">New Post</h1>
+<h1 mat-dialog-title [ngStyle]="{color: hintColor}">{{postModel.id ? 'Edit Post' : 'New Post'}}</h1>
 <form #form="ngForm">
 <div class="container-fluid mb-4 p-0">
     <div class="row">
@@ -10,7 +10,7 @@
                  required
                  name="title"
                  autocomplete="off"
-                 [(ngModel)]="newPostModel.title">
+                 [(ngModel)]="postModel.title">
         </mat-form-field>
       </div>
 
@@ -21,7 +21,7 @@
                  placeholder="SubTitle"
                  name="subTitle"
                  autocomplete="off"
-                 [(ngModel)]="newPostModel.subTitle">
+                 [(ngModel)]="postModel.subTitle">
         </mat-form-field>
       </div>
 
@@ -32,7 +32,7 @@
                  placeholder="Image Url"
                  name="imageUrl"
                  autocomplete="off"
-                 [(ngModel)]="newPostModel.imageUrl">
+                 [(ngModel)]="postModel.imageUrl">
         </mat-form-field>
       </div>
 
@@ -42,7 +42,7 @@
                     placeholder="Content"
                     required
                     name="content"
-                    [(ngModel)]="newPostModel.content"></textarea>
+                    [(ngModel)]="postModel.content"></textarea>
           <mat-hint align="start" [ngStyle]="{color: hintColor}">
             <strong>You can write your content here!</strong> </mat-hint>
         </mat-form-field>

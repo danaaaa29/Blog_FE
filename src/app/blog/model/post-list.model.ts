@@ -4,6 +4,5 @@ export interface IPost{
   subTitle?: string;
   imageUrl: string;
   content: string;
-  status: boolean;
 }
 

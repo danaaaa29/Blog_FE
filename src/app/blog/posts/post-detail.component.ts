@@ -15,7 +15,6 @@ export class PostDetailComponent implements OnInit {
     subTitle: '',
     imageUrl: '',
     content: '',
-    status: true
   };
   postColor = '#69f0ae';
 

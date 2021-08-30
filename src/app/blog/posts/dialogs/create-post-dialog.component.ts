@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { CreatePostDialog } from "../../model/create-post-dialog.model";
 import { NgForm } from "@angular/forms";
 import { PostService } from "../services/post.service";
-import { MatDialogRef } from "@angular/material/dialog";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+
 
 @Component({
   selector: 'app-create-post-dialog',
@@ -10,24 +11,32 @@ import { MatDialogRef } from "@angular/material/dialog";
 })
 
 export class CreatePostDialogComponent implements OnInit {
-  newPostModel: CreatePostDialog = {
-    title: '',
-    subTitle: '',
-    imageUrl: '',
-    content: ''
-  };
+  postModel: CreatePostDialog;
   hintColor = '#69f0ae';
-  constructor(private postService: PostService,
-              private dialogRef: MatDialogRef<CreatePostDialogComponent>) {}
 
-  ngOnInit() {}
+
+  constructor(private postService: PostService,
+              private dialogRef: MatDialogRef<CreatePostDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: {post: CreatePostDialog}) {}
+
+  ngOnInit() {
+      this.postModel = this.data.post;
+  }
 
   submit(form: NgForm){
     if (form.valid) {
-      this.postService.createPost(this.newPostModel)
-        .subscribe( (res) => {
-          this.dialogRef.close(res);
-      });
+      if (this.postModel.id) {
+        this.postService.updatePost(this.postModel)
+          .subscribe((res) => {
+            this.dialogRef.close(res);
+          })
+      }
+      else {
+        this.postService.createPost(this.postModel)
+          .subscribe( (res) => {
+            this.dialogRef.close(res);
+          });
+      }
     }
   }
 }
