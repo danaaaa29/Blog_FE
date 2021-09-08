@@ -1,0 +1,15 @@
+<div class="row d-inline justify-content-sm-start">
+  <div class="col-3" *ngIf="comment">
+    <mat-card>
+      <mat-card-title>{{comment.commentAuthor}}</mat-card-title>
+      <mat-card-content>
+        <p>{{comment.commentEmail}}</p>
+      </mat-card-content>
+      <mat-card-content>
+        <p>{{comment.commentContent}}</p>
+      </mat-card-content>
+      <mat-card-footer align="end">Created At: {{comment.createdAt | date}} <br>
+        Updated At: {{comment.updatedAt | date}}</mat-card-footer>
+    </mat-card>
+  </div>
+</div>
