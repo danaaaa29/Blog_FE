@@ -1,6 +1,6 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-3" *ngIf="post">
+  <div class="row justify-content-center">
+    <div class="col-3"  *ngIf="post">
     <mat-card>
       <mat-card-header [ngStyle]="{color: postColor}">
         <mat-card-title>{{post.title}}</mat-card-title>
@@ -10,9 +10,11 @@
         <mat-card-content>{{post.content}}</mat-card-content>
       <mat-card-actions>
         <button mat-button><mat-icon>thumb_up</mat-icon></button>
-        <button mat-button><mat-icon>reply</mat-icon></button>
+        <button mat-button (click)="replyPost(post.id)"><mat-icon>reply</mat-icon></button>
         <button mat-button><mat-icon>share</mat-icon></button>
       </mat-card-actions>
+      <mat-card-footer align="end">Created At: {{post.createdAt | date}} <br>
+        Updated At: {{post.updatedAt | date}}</mat-card-footer>
     </mat-card>
     </div>
   </div>

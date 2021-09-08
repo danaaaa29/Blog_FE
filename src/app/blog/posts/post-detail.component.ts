@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IPost } from "../model/post-list.model";
-import { ActivatedRoute, Params } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { PostService } from "./services/post.service";
 
 @Component({
@@ -9,21 +9,21 @@ import { PostService } from "./services/post.service";
 })
 
 export class PostDetailComponent implements OnInit {
-  post: IPost = {
-    id: 0,
-    title: '',
-    subTitle: '',
-    imageUrl: '',
-    content: '',
-  };
+  // @ts-ignore
+  post: IPost;
   postColor = '#69f0ae';
 
   constructor(private postService: PostService,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute,
+              private router: Router) {}
 
   ngOnInit() {
-    this.postService.getPost(this.route.snapshot.params['id']).subscribe((res: IPost) => {
+    this.postService.getPost(this.route.snapshot.params['postId']).subscribe((res: IPost) => {
       this.post = res;
     })
+  }
+
+  replyPost(postId: number) {
+    this.router.navigate(['posts', postId, 'comments']);
   }
 }
