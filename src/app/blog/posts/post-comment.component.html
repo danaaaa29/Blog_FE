@@ -56,8 +56,8 @@
             <button mat-button matTooltip="Edit Comment" (click)="onEditComment(comment)"><mat-icon>edit</mat-icon></button>
             <button mat-button matTooltip="Delete Comment" (click)="onDeleteComment(comment.id)"><mat-icon>delete</mat-icon></button>
           </mat-card-actions>
-          <mat-card-footer align="end">Created At: {{comment.createdAt | date}} <br>
-            Updated At: {{comment.updatedAt | date}}</mat-card-footer>
+          <mat-card-footer align="end">Created At: {{comment.createdAt | date: 'shortTime'}} <br>
+            Updated At: {{comment.updatedAt | date: 'shortTime'}}</mat-card-footer>
         </mat-card>
       </div>
   </div>

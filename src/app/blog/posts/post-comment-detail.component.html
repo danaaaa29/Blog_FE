@@ -8,8 +8,8 @@
       <mat-card-content>
         <p>{{comment.commentContent}}</p>
       </mat-card-content>
-      <mat-card-footer align="end">Created At: {{comment.createdAt | date}} <br>
-        Updated At: {{comment.updatedAt | date}}</mat-card-footer>
+      <mat-card-footer align="end">Created At: {{comment.createdAt | date: 'shortTime'}} <br>
+        Updated At: {{comment.updatedAt | date: 'shortTime'}}</mat-card-footer>
     </mat-card>
   </div>
 </div>
