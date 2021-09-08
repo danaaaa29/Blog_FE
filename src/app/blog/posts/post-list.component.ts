@@ -15,13 +15,8 @@ import { CreatePostDialog } from "../model/create-post-dialog.model";
 
 export class PostListComponent implements OnInit {
   public posts: IPost[] = [];
-  public post: IPost = {
-    id: 0,
-    title: '',
-    subTitle: '',
-    imageUrl: '',
-    content: '',
-  };
+  // @ts-ignore
+  public post: IPost;
  postColor = '#69f0ae';
 
   constructor(private postService: PostService,
@@ -46,8 +41,8 @@ export class PostListComponent implements OnInit {
     });
   }
 
-  openView(post: {id: number}) {
-    this.router.navigate(['/view-post', post.id]);
+  openView(postId: number) {
+    this.router.navigate(['/view-post', postId]);
   }
 
   openUpdatePostDialog(post: IPost) {
@@ -70,5 +65,13 @@ export class PostListComponent implements OnInit {
         this.posts.splice(index, 1);
       });
     }
+  }
+
+  replyPost(postId: number) {
+    this.router.navigate(['posts', postId, 'comments']);
+  }
+
+  addLike() {
+
   }
 }

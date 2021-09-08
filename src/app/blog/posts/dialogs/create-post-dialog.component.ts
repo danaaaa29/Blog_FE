@@ -11,6 +11,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 })
 
 export class CreatePostDialogComponent implements OnInit {
+  // @ts-ignore
   postModel: CreatePostDialog;
   hintColor = '#69f0ae';
 

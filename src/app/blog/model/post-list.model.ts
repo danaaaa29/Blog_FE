@@ -2,7 +2,9 @@ export interface IPost{
   id: number;
   title: string;
   subTitle?: string;
-  imageUrl: string;
   content: string;
+  likes: number;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
