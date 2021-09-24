@@ -18,6 +18,7 @@ export class PostCommentComponent implements OnInit {
   // @ts-ignore
   public comForm: FormGroup;
   isEditing: boolean = false;
+  togglePanel: any = {};
 
   hintColor = '#7b1fa2';
 
@@ -43,6 +44,9 @@ export class PostCommentComponent implements OnInit {
     if (this.comForm.controls.commentEmail.hasError('required')) {
       return 'Please enter your email!'
     }
+    if (this.comForm.controls.commentAuthor.hasError('required')) {
+      return 'Ceva'
+    }
     return this.comForm.controls.commentEmail.hasError('email') ? 'Not a valid email' : '';
   }
 
@@ -51,8 +55,8 @@ export class PostCommentComponent implements OnInit {
       commentAuthor: this.comForm.get(['commentAuthor'])?.value,
       commentEmail: this.comForm.get(['commentEmail'])?.value,
       commentContent: this.comForm.get(['commentContent'])?.value,
-   }
-   return com;
+    }
+    return com;
   }
 
   onSubmit() {
@@ -60,12 +64,12 @@ export class PostCommentComponent implements OnInit {
       // @ts-ignore
       this.commentService.createComment(this.activatedRoute.snapshot.params.postId, this.createFromForm())
         .subscribe();
-       window.location.reload();
+      window.location.reload();
     } else
     {
       this.commentService.updateComment(this.activatedRoute.snapshot.params.postId, this.activatedRoute.snapshot.queryParams['commentId'], this.comForm.value)
         .subscribe(() => {
-          window.location.reload();
+
         });
       this.clearQueryParams();
     }
@@ -79,7 +83,7 @@ export class PostCommentComponent implements OnInit {
       });
     } else
     {
-     this.router.navigate(['/']);
+      this.router.navigate(['/posts']);
     }
   }
 
@@ -104,9 +108,9 @@ export class PostCommentComponent implements OnInit {
     if (id) {
       this.commentService.deleteComment(this.activatedRoute.snapshot.params.postId, id)
         .subscribe(() => {
-        const index = this.comments.findIndex(deleteCom => deleteCom.id === id);
-        this.comments.splice(index, 1);
-      });
+          const index = this.comments.findIndex(deleteCom => deleteCom.id === id);
+          this.comments.splice(index, 1);
+        });
     }
   }
 

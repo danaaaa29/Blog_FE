@@ -6,21 +6,25 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MaterialModule } from "./shared/material.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatTabsModule } from "@angular/material/tabs";
+import { HomeComponent } from "./home/home.component";
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
-  imports: [
-    MatToolbarModule,
-    MaterialModule,
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    PostModule,
+    imports: [
+        MatToolbarModule,
+        MaterialModule,
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        PostModule,
+        MatTabsModule,
 
-  ],
+    ],
   providers: [],
   bootstrap: [
     AppComponent
